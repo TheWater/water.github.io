@@ -72,4 +72,44 @@ int main()
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</title>
+    <url>/2020/12/23/09%20%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86Fibonacci%EF%BC%88%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%EF%BC%89%E6%95%B0%E5%88%97%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="2020-12-09-用数组处理Fibonacci（斐波那契）数列问题"><a href="#2020-12-09-用数组处理Fibonacci（斐波那契）数列问题" class="headerlink" title="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题"></a>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</h1><blockquote>
+<p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</p>
+</blockquote>
+<ul>
+<li>实验七 数组1.0</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>实验七 指针 实验报告笔记</title>
+    <url>/2020/12/23/%E5%AE%9E%E9%AA%8C%E4%B8%83%20%E6%8C%87%E9%92%88%20%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="实验七-指针-实验报告笔记"><a href="#实验七-指针-实验报告笔记" class="headerlink" title="实验七 指针 实验报告笔记"></a>实验七 指针 实验报告笔记</h1><p>字符大小写转换<br>某字母+32；</p>
+<p>指针间接输出*pch_1<br>指针取地址&amp;pch_1</p>
+<ul>
+<li>用指针访问数组知识点集合<blockquote>
+<p>在一维数组中，数组A的元素A[i]的地址&amp;A[i]=A+L*i<br> 其中A为数组的<strong>标识符（数组名）</strong>，也可以用A来代表数组的 <strong>首地址</strong><br> L为数组A的数据类型.<br> 由此可见，对于一维数组，只需要知道数据类型大小和索引i，就可以知道A[i]的地址，从而就可以访问A[i]了，这也是为什么一维数组的定义可以不指定数组大小，也不会妨碍数组元素的访问。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>二维数组，实际上也是一维数组，只不过这个一维数组的每个元素都是一个一维数组。因此，将二维数组的每一行看做一个元素，很容易可以知道二维数组中各元素在内存中是按行优先进行连续存储的，如定义数组A[3][4]，那么它在内存中的存储情况如下：<br><img src="./img/img_1.png" alt="这是图片" title="Magic Gardens"></p>
+</blockquote>
+<blockquote>
+<p>由此也可得到二维数组中元素A[i][j]的地址为&amp;A[i][j]=A+L<em>（C</em>i+j）<br>其中A为二维数组A的<strong>标识符（数组名）</strong>，也就是数组的<strong>首地址</strong><br>L为数组元素的<strong>数据类型</strong><br>C为二维数组的<strong>列数</strong>。<br>由此可见，要知道二维数组中某一元素的地址，就必须知道数据类型大小以及二维数组的列数，这样最终才能实现对二维数组元素的访问，这也是为什么二维数组的定义必须指定列数。</p>
+</blockquote>
+<p>1.通过指针访问数组</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;                </span></span><br>  <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function">  </span>&#123;<br>    <span class="hljs-keyword">int</span> a[<span class="hljs-number">5</span>] = &#123; <span class="hljs-number">5</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">30</span> &#125;;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;int型数组各元素的地址:\n&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>      <span class="hljs-built_in">cout</span> &lt;&lt; &amp;a[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span> ;  <span class="hljs-comment">//取地址</span><br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>      <span class="hljs-built_in">cout</span> &lt;&lt; a + i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>; <span class="hljs-comment">//首地址+索引i</span><br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>      <span class="hljs-keyword">int</span>* pa = a;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>        <span class="hljs-built_in">cout</span> &lt;&lt; pa++ &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n\n&quot;</span>;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;反序输出数组元素:\n&quot;</span>;<br>    <span class="hljs-keyword">for</span> (pa = a + <span class="hljs-number">3</span>; pa &gt;= a; pa--)<br>      <span class="hljs-built_in">cout</span> &lt;&lt; *pa&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<p>int a[5] = { 5,10,15,30 };<br>int *p=a+2  //即访问a[2];<br>2.指向整个数组的指针（数组指针方式）</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>]=&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;,&#123;<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>&#125;,&#123;<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>&#125;&#125;;<br><span class="hljs-built_in">int</span> (*p)[<span class="hljs-number">4</span>]=a;<br></code></pre></td></tr></table></figure>
+<p>p的含义也就不难得出了：指向一个有四个元素的数组的首地址，</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>2020/12/20HTML全屏视频作背景</title>
+    <url>/2020/12/23/20HTML%E5%85%A8%E5%B1%8F%E8%A7%86%E9%A2%91%E4%BD%9C%E8%83%8C%E6%99%AF/</url>
+    <content><![CDATA[<h1 id="2020-12-20HTML全屏视频作背景"><a href="#2020-12-20HTML全屏视频作背景" class="headerlink" title="2020/12/20HTML全屏视频作背景"></a>2020/12/20HTML全屏视频作背景</h1>]]></content>
+  </entry>
 </search>
