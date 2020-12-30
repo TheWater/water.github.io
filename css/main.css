@@ -340,10 +340,10 @@ img[srcset] {
 }
 :root {
   --color-mode: 'light';
-  --body-bg-color: #eee;
+  --body-bg-color: #CFAA9E;
   --board-bg-color: #fff;
   --text-color: #3c4858;
-  --sec-text-color: #718096;
+  --sec-text-color: #DE7E73;
   --post-text-color: #2c3e50;
   --post-heading-color: #1a202c;
   --post-link-color: #0366d6;
@@ -357,7 +357,7 @@ img[srcset] {
     --color-mode: 'dark';
   }
   :root:not([data-user-color-scheme]) {
-    --body-bg-color: #181c27;
+    --body-bg-color: #7AA97;
     --board-bg-color: #252d38;
     --text-color: #c4c6c9;
     --sec-text-color: #a7a9ad;
@@ -427,7 +427,7 @@ img[srcset] {
   }
 }
 [data-user-color-scheme='dark'] {
-  --body-bg-color: #181c27;
+  --body-bg-color: #7AA97;
   --board-bg-color: #252d38;
   --text-color: #c4c6c9;
   --sec-text-color: #a7a9ad;
