@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</title>
-    <url>/2020/12/23/09%20%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86Fibonacci%EF%BC%88%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%EF%BC%89%E6%95%B0%E5%88%97%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="2020-12-09-用数组处理Fibonacci（斐波那契）数列问题"><a href="#2020-12-09-用数组处理Fibonacci（斐波那契）数列问题" class="headerlink" title="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题"></a>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</h1><blockquote>
-<p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</p>
-</blockquote>
-<ul>
-<li>实验七 数组1.0</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>2020/12/06求最大公约数的方法</title>
     <url>/2020/12/16/06%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="2020-12-06求最大公约数的方法"><a href="#2020-12-06求最大公约数的方法" class="headerlink" title="2020/12/06求最大公约数的方法"></a>2020/12/06求最大公约数的方法</h1><blockquote>
@@ -63,6 +52,17 @@ int main()
 
 
 </code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</title>
+    <url>/2020/12/23/09%20%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86Fibonacci%EF%BC%88%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%EF%BC%89%E6%95%B0%E5%88%97%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="2020-12-09-用数组处理Fibonacci（斐波那契）数列问题"><a href="#2020-12-09-用数组处理Fibonacci（斐波那契）数列问题" class="headerlink" title="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题"></a>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</h1><blockquote>
+<p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</p>
+</blockquote>
+<ul>
+<li>实验七 数组1.0</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
