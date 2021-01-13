@@ -71,6 +71,24 @@ int main()
     <content><![CDATA[<h1 id="2020-12-20HTML全屏视频作背景"><a href="#2020-12-20HTML全屏视频作背景" class="headerlink" title="2020/12/20HTML全屏视频作背景"></a>2020/12/20HTML全屏视频作背景</h1>]]></content>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2020/09/17/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>实验七 指针 实验报告笔记</title>
     <url>/2020/12/23/%E5%AE%9E%E9%AA%8C%E4%B8%83%20%E6%8C%87%E9%92%88%20%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="实验七-指针-实验报告笔记"><a href="#实验七-指针-实验报告笔记" class="headerlink" title="实验七 指针 实验报告笔记"></a>实验七 指针 实验报告笔记</h1><p>字符大小写转换<br>某字母+32；</p>
@@ -88,28 +106,10 @@ int main()
 <p>由此也可得到二维数组中元素A[i][j]的地址为&amp;A[i][j]=A+L<em>（C</em>i+j）<br>其中A为二维数组A的<strong>标识符（数组名）</strong>，也就是数组的<strong>首地址</strong><br>L为数组元素的<strong>数据类型</strong><br>C为二维数组的<strong>列数</strong>。<br>由此可见，要知道二维数组中某一元素的地址，就必须知道数据类型大小以及二维数组的列数，这样最终才能实现对二维数组元素的访问，这也是为什么二维数组的定义必须指定列数。</p>
 </blockquote>
 <p>1.通过指针访问数组</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;                </span></span><br>  <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function">  </span>&#123;<br>    <span class="hljs-keyword">int</span> a[<span class="hljs-number">5</span>] = &#123; <span class="hljs-number">5</span>,<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">30</span> &#125;;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;int型数组各元素的地址:\n&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>      <span class="hljs-built_in">cout</span> &lt;&lt; &amp;a[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span> ;  <span class="hljs-comment">//取地址</span><br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>      <span class="hljs-built_in">cout</span> &lt;&lt; a + i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>; <span class="hljs-comment">//首地址+索引i</span><br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>      <span class="hljs-keyword">int</span>* pa = a;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>        <span class="hljs-built_in">cout</span> &lt;&lt; pa++ &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n\n&quot;</span>;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;反序输出数组元素:\n&quot;</span>;<br>    <span class="hljs-keyword">for</span> (pa = a + <span class="hljs-number">3</span>; pa &gt;= a; pa--)<br>      <span class="hljs-built_in">cout</span> &lt;&lt; *pa&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;\n\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;                </span><br><span class="line">  using namespace std;</span><br><span class="line">  int main()</span><br><span class="line">  &#123;</span><br><span class="line">    int a[5] &#x3D; &#123; 5,10,15,30 &#125;;</span><br><span class="line">    cout &lt;&lt; &quot;int型数组各元素的地址:\n&quot;;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 4; i++)</span><br><span class="line">      cout &lt;&lt; &amp;a[i]&lt;&lt;&quot; &quot; ;  &#x2F;&#x2F;取地址</span><br><span class="line">    cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 4; i++)</span><br><span class="line">      cout &lt;&lt; a + i&lt;&lt;&quot; &quot;; &#x2F;&#x2F;首地址+索引i</span><br><span class="line">    cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">      int* pa &#x3D; a;</span><br><span class="line">      for (int i &#x3D; 0; i &lt; 4; i++)</span><br><span class="line">        cout &lt;&lt; pa++ &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; &quot;\n\n&quot;;</span><br><span class="line">    cout &lt;&lt; &quot;反序输出数组元素:\n&quot;;</span><br><span class="line">    for (pa &#x3D; a + 3; pa &gt;&#x3D; a; pa--)</span><br><span class="line">      cout &lt;&lt; *pa&lt;&lt;&quot; &quot;;</span><br><span class="line">    cout &lt;&lt; &quot;\n\n&quot;;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>int a[5] = { 5,10,15,30 };<br>int *p=a+2  //即访问a[2];<br>2.指向整个数组的指针（数组指针方式）</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>]=&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;,&#123;<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>&#125;,&#123;<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>&#125;&#125;;<br><span class="hljs-built_in">int</span> (*p)[<span class="hljs-number">4</span>]=a;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int a[3][4]&#x3D;&#123;&#123;1,2,3,4&#125;,&#123;5,6,7,8&#125;,&#123;9,10,11,12&#125;&#125;;</span><br><span class="line">int (*p)[4]&#x3D;a;</span><br></pre></td></tr></table></figure>
 <p>p的含义也就不难得出了：指向一个有四个元素的数组的首地址，</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/09/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
 </search>

@@ -1,418 +1,374 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans" data-default-color-scheme=&#34;auto&#34;>
-
-
-
+<html lang="zh-Hans">
+<!--Head-->
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/head_1.jpg">
-  <link rel="icon" type="image/png" href="/img/head_1.jpg">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="“不知名个人站，涉及生活趣事分享，技术知识共享等，欢迎各位共同学习...”">
-  <meta name="author" content="water">
-  <meta name="keywords" content="">
-  <title>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题 - 三水の顺丰快递</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="GZh2jRE6IgVXx8SYpoRZYwcs4_Wy7vWEAeSIHCs3UE8"/>
+    <meta name="baidu-site-verification" content="5EmnBCPDrY" />
+    
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+    <title>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题 - 三水の顺丰快递</title>
 
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
+    <meta property="og:url" content="http://jl61xj.coding-pages.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题 - 三水の顺丰快递 | 三水の顺丰快递">
     
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+        <meta property="og:image" content="https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/img1.jpg">
     
-  
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+    
+      <meta property="og:description" content="“不知名个人站，涉及生活趣事分享，技术知识共享等，欢迎各位共同学习...”">
+    
 
+    <!--一言-->
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <!--mdui-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+          integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw"
+          crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+            integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+            crossorigin="anonymous">
+    </script>
+    <!--jquery-->
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 
+    <!--theme-->
+    
+<link rel="stylesheet" href="/css/mdm.css">
 
-<!-- 主题依赖的图标库，不要自行修改 -->
+    
+<link rel="stylesheet" href="/css/mdm_theme_dark.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+    
+<script src="/js/mdm.js"></script>
 
+    
+    <!--高亮-->
+    
+<link rel="stylesheet" href="/css/solarized-light.css">
 
+    <!--全局变灰-->
+    
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+    
+    
+<script src="/js/click-effect.js"></script>
 
+    
 
-<link  rel="stylesheet" href="/css/main.css" />
+    <!--本地搜索-->
+    <!-- <script src="js/search.js"></script> -->
+    <!--自动提交给百度-->
+    
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+    
 
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"jl61xj.coding-pages.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+    <!---google ad config-->
+    
+        <script data-ad-client="ca-pub-8181303774570877" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
 <meta name="generator" content="Hexo 5.2.0"></head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>三水の顺丰快递</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+<!--header_bar-->
+<div class="mdui-appbar mdui-shadow-0" id="bar">
+    <div class="mdui-toolbar mdui-text-color-white">
+        <a class="mdui-btn mdui-btn-icon mdui-hidden-sm-up" mdui-menu="{target: '#example-2'}">
+            <i class="mdui-icon material-icons">menu</i>
+        </a>
+        <ul class="mdui-menu" id="example-2">
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                主页
-              </a>
+            <li class="mdui-menu-item">
+            <a href="/" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">home</i>
+                首页
+            </a>
             </li>
-          
+            <li class="mdui-divider"></li>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
+            <li class="mdui-menu-item">
+            <a href="/tags" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">local_offer</i>
+                标签
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+            <li class="mdui-menu-item">
+            <a href="/archives" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">library_books</i>
                 归档
-              </a>
+            </a>
             </li>
-          
+            <li class="mdui-divider"></li>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
+            <li class="mdui-menu-item">
+            <a href="/collection" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">videocam</i>
+                作品集
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+            <li class="mdui-menu-item">
+            <a href="/about" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">error_outline</i>
                 关于
-              </a>
+            </a>
             </li>
-          
+            <li class="mdui-divider"></li>
         
+        </ul>
+        <!--大屏-->
         
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
+        <a href="/"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            首页
+        </a>
         
+        <a href="/tags"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            标签
+        </a>
         
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
+        <a href="/archives"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            归档
+        </a>
         
-      </ul>
-    </div>
-  </div>
-</nav>
+        <a href="/collection"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            作品集
+        </a>
+        
+        <a href="/about"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            关于
+        </a>
+        
+        <div class="mdui-toolbar-spacer"></div>
+        <!--
+        <div class="mdui-textfield mdui-textfield-expandable" style="max-width:500px;margin-right: -10px;">
+            <button class="mdui-textfield-icon mdui-btn mdui-btn-icon">
+                <i class="mdui-icon material-icons">search</i>
+            </button>
+            <input class="mdui-textfield-input mdui-text-color-white" id="local-search-input" type="text" placeholder="输入搜索内容..."/>
+            <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
+        </div>-->
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/background.JPG') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题">
+        <button onclick="themeChange()"
+                class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-color-white" 
+                mdui-tooltip="{content: '切换亮/暗色模式'}">
+            <i class="mdui-icon material-icons" id="themeIcon">brightness_7</i>
+        </button>
+        <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-menu="{target: '#share_menu'}">
+            <i class="mdui-icon material-icons">share</i>
+        </button>
+        <!--分享-->
+        
+        <ul class="mdui-menu" id="share_menu">
+            
+                <li class="mdui-menu-item">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://jl61xj.coding-pages.com//about/index.html" target="_blank" class="mdui-ripple">
+                        facebook
+                    </a>
+                </li>
+            
+            
+            
+                <li class="mdui-menu-item">
+                    <a href="http://connect.qq.com/widget/shareqq/index.html?site=三水の顺丰快递&title=about&summary=“不知名个人站，涉及生活趣事分享，技术知识共享等，欢迎各位共同学习...”&pics=http://jl61xj.coding-pages.com/favicon.ico&url=http://jl61xj.coding-pages.com/about/index.html" target="_blank" class="mdui-ripple">
+                        QQ
+                    </a>
+                </li>
+            
+
+            
+                <li class="mdui-menu-item">
+                    <a href="https://twitter.com/intent/tweet?text=about&url=http://jl61xj.coding-pages.com//about/index.html&via=water" target="_blank" class="mdui-ripple">
+                        twitter
+                    </a>
+                </li>
+            
+        
+            
+                <li class="mdui-menu-item">
+                    <a href="http://service.weibo.com/share.php?appkey=&title=about&url=http://jl61xj.coding-pages.com//about/index.html&pic=&searchPic=false&style=simple" target="_blank" class="mdui-ripple">
+                        weibo
+                    </a>
+                </li>
+            
+
+            
+                <li class="mdui-menu-item">
+                    <a href="https://telegram.me/share/url?url=http://jl61xj.coding-pages.com//about/index.html&text=about" target="_blank" class="mdui-ripple">
+                        telegram
+                    </a>
+                </li>
+            
+
+            
+                <li class="mdui-menu-item">
+                    <a href="https://plus.google.com/share?url=http://jl61xj.coding-pages.com//about/index.html" target="_blank" class="mdui-ripple">
+                        googleplus
+                    </a>
+                </li>
               
-            </span>
+        
+              
+                <li class="mdui-menu-item">
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://jl61xj.coding-pages.com//about/index.html&title=about" target="_blank" class="mdui-ripple">
+                        linkedin
+                    </a>
+                </li>
+              
 
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-23 13:12" pubdate>
-        December 23, 2020 pm
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      132 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      1
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
+            </ul>
+        
     </div>
-  </header>
+</div>
+<!--Header-->
+<header>
+    <div class="mdui-card-media" style="overflow: hidden;">
+        
+        <img src="" class="header-box blur mdui-img-fluid" onerror="{this.src='https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/img1.jpg'}" draggable="false">
+        
+            <div class="header-content">
+                
+                <span class="header_title">2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</span></br>
+                
+                <p id="hitokoto">一言加载中...</p>
+            </div>
+        </img>
+    </div>
+</header>
+<body>
+  <div class="mdui-center" id="content-inner" style="width:95%; max-width:700pt;">
+    <!--博文详细内容-->
 
-  <main>
-    
-      
+<link rel="stylesheet" href="/css/post.css">
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</h1>
-            
-            <div class="markdown-body">
-              <h1 id="2020-12-09-用数组处理Fibonacci（斐波那契）数列问题"><a href="#2020-12-09-用数组处理Fibonacci（斐波那契）数列问题" class="headerlink" title="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题"></a>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</h1><blockquote>
+<div>
+  <div class="">
+    <article class="article-content mdui-container mdui-center mdui-shadow-12">
+      <h1 id="2020-12-09-用数组处理Fibonacci（斐波那契）数列问题"><a href="#2020-12-09-用数组处理Fibonacci（斐波那契）数列问题" class="headerlink" title="2020/12/09 用数组处理Fibonacci（斐波那契）数列问题"></a>2020/12/09 用数组处理Fibonacci（斐波那契）数列问题</h1><blockquote>
 <p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</p>
 </blockquote>
 <ul>
 <li>实验七 数组1.0</li>
 </ul>
 
+      
+    <div class="mdui-container">
+        <button class="mdui-center mdui-color-pink mdui-btn-icon mdui-btn mdui-btn-raised mdui-ripple"
+            mdui-dialog="{target: '#reward-dialog'}">赏</button>
+        <div class="mdui-dialog" id="reward-dialog">
+            <div class="reward-title">写博客不易，请我喝杯咖啡？ </div>
+            <div class="mdui-divider"></div>
+            <div class="mdui-tab mdui-tab-full-width" id="reward-tab">
+                <a href="#reward-alipay" class="mdui-ripple">支付宝</a>
+                <a href="#reward-wechat" class="mdui-ripple">微信</a>
             </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/12/23/%E5%AE%9E%E9%AA%8C%E4%B8%83%20%E6%8C%87%E9%92%88%20%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">实验七 指针 实验报告笔记</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2020/12/23/20HTML%E5%85%A8%E5%B1%8F%E8%A7%86%E9%A2%91%E4%BD%9C%E8%83%8C%E6%99%AF/">
-                        <span class="hidden-mobile">2020/12/20HTML全屏视频作背景</span>
-                        <span class="visible-mobile">Nächster</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+            <div id="reward-alipay">
+                <img src="https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/alipay.jpg" class="mdui-center noclick">
             </div>
-
-            
-          </article>
+            <div id="reward-wechat">
+                <img src="https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/wechat.jpg" class="mdui-center noclick">
+            </div>
         </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-       <p style="text-align:center;">欢迎关注公众号</p> <img src="/img/gongzonghao.jpg" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:300px; height:300px;">
-    </div>
-  </div>
+    <script type="text/javascript">
+        var tab = new mdui.Tab('#reward-tab');
+        mdui.JQ('#reward-dialog').on('open.mdui.dialog', function () {
+        tab.handleUpdate();
+        });
+    </script>
 
 
-    
+    </article>
+    <div class="article-content mdui-container mdui-center mdui-shadow-12">
+      
 
-    
-      <a id="scroll-top-button" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.13.0/js/md5.min.js"></script>
+
+    <div class="mdui-center">
+        <div class="mdui-center">
+            <article class="mdui-typo">
+                <h2>评论</h2>
+                <div id="gitalk-container"></div>
+            </article>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+    </div>
+
+  	<script type="text/javascript">
+		const gitalk = new Gitalk({
+			clientID: 'ecbf6316c9aa7a6bfd7a',
+			clientSecret: '5c875e5986ed75f4509d97acd16628b97f7506f1',
+			repo: 'tonychenn.github.io',
+			owner: 'tonychenn',
+			admin: ['tonychenn'],
+			id: md5(window.location.pathname),      // Ensure uniqueness and length less than 50 ，so use md5
+			distractionFreeMode: true  // Facebook-like distraction free mode
+		})
+		gitalk.render('gitalk-container')
+	</script>
+
+
+
     </div>
   </div>
+
+
+  <!-- <aside id="sidebar" class="mdui-shadow-2 mdui-hoverable">
+    <div class="widget">
+      <h3 class="title">目录</h3>
+      <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2020-12-09-%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86Fibonacci%EF%BC%88%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%EF%BC%89%E6%95%B0%E5%88%97%E9%97%AE%E9%A2%98"><span class="post-toc-text">2020&#x2F;12&#x2F;09 用数组处理Fibonacci（斐波那契）数列问题</span></a></li></ol> 
+    </div>
+  </aside> -->
 </div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
-  
-
-  
-
-  
+  <!--footer-->
+  <footer class="mdui-color-indigo">
+    <div class="mdui-container">
+        <div style="text-align: center; padding: 20px;">
+            <div >
+                Copyright &copy;
+                water&nbsp&nbsp2021
+                &nbspTheme By
+                <a target="_blank" rel="noopener" href="https://github.com/TonyChenn/hexo-theme-mdm">mdm</a>
+                <iframe style="margin-left: 2px; margin-bottom:-5px;" 
+                        src="https://ghbtns.com/github-btn.html?user=TonyChenn&repo=hexo-theme-mdm&type=star&count=true" 
+                        frameborder="0" scrolling="0" width="91px" height="20px">
+                </iframe>
+            </div>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp总访客<span id="busuanzi_value_site_uv"></span>人
+        </div>
+    </div>
 </footer>
-
-<!-- SCRIPTS -->
-
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
-
-
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-
 </body>
+<!--goTop-->
+<div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-pink">
+    <i class="mdui-icon material-icons">arrow_upward</i>
+</div>
 </html>
